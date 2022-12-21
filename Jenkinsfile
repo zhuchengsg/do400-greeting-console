@@ -22,5 +22,14 @@ pipeline{
         }
 
         // Add the Release stage here
+        stage('Release') {
+            steps {
+                sh '''
+                    oc project ikxxhs-greetings
+                    oc start-build greeting-console  --follow --wait
+                '''
+            }
+        }
+
     }
 }
